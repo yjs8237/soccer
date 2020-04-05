@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  thymeleaf:
+    cache: false
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mariadb://localhost:3306/soccer
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: Jsyun0415!
+    url: jdbc:mariadb://localhost:3306/soccer
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
+
+
