@@ -19,8 +19,28 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class Member extends BaseEntity {
 
-    @Column(name = "name")
+    @Column(name = "member_id" , length = 100)
+    @NotNull
+    private String memberId;
+
+    @Column(name = "name" , length = 100)
     @NotNull
     private String name;
+
+    @Column(name = "cell_no" , length = 45)
+    @NotNull
+    private String cellNo;
+
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "back_number")
+    private int backNumber;
+
+    @Column(name = "img_url" , length = 255)
+    private String imgUrl;
+
+    @Column(name = "img_path" , length = 255)
+    private String imgPath;
 
 }

@@ -37,10 +37,14 @@ dependencies {
     implementation 'com.querydsl:querydsl-jpa'
 
     compileOnly 'org.projectlombok:lombok'
+    compile "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+
+    testCompile 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
