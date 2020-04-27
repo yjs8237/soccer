@@ -36,13 +36,16 @@ dependencies {
     // queryDSL
     implementation 'com.querydsl:querydsl-jpa'
 
+    implementation 'org.modelmapper:modelmapper:2.3.4'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.2.4.RELEASE'
     compileOnly 'org.projectlombok:lombok'
     compile "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-
+    testCompile 'com.h2database:h2-mvstore:1.4.195'
     testCompile 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
