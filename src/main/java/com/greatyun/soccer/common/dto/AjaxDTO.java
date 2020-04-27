@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AjaxDTO {
+public class AjaxDTO<T> {
 
     private int result;
     private String msg;
@@ -37,7 +37,7 @@ public class AjaxDTO {
 
     private String recordsFiltered;
 
-    private List data = new ArrayList();
+    private List<T> data = new ArrayList<>();
 
     private Object obj;
 
