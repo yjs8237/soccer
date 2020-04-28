@@ -1,6 +1,4 @@
 package com.greatyun.soccer.common.dto;
-
-
 import lombok.*;
 
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DataTableDTO {
+public class DataTableDTO<T> {
 
     private String myAdminId;
 
@@ -47,7 +45,7 @@ public class DataTableDTO {
 
     private String recordsFiltered;
 
-    private List data = new ArrayList();
+    private List<T> data = new ArrayList<T>();
 
 
 }
