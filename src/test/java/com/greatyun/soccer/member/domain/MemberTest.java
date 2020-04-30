@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@DataJpaTest
+@SpringBootTest
 @ActiveProfiles(value = "dev")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class MemberTest {
@@ -26,6 +26,7 @@ class MemberTest {
     MemberRepository memberRepository;
 
     private Member member;
+
     @BeforeEach
     public void before() {
         this.member = Member.builder()
@@ -55,12 +56,20 @@ class MemberTest {
     @Test
     public void 회원_삭제_테스트() {
         // given
+        this.member = Member.builder()
+                .age(36)
+                .backNumber(10)
+                .cellNo("01032221111")
+                .imgPath("path")
+                .imgUrl("url")
+                .memberId("greatyun")
+                .name("greatyun")
+                .build();
         memberRepository.save(member);
         Optional<Member> optional = memberRepository.findById(member.getPkid());
 
         // when
         memberRepository.delete(optional.get());
-
         // then
         List<Member> members = memberRepository.findAll();
         assertThat(members.size()).isEqualTo(0);

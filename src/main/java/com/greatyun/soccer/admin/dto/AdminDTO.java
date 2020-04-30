@@ -1,6 +1,7 @@
 package com.greatyun.soccer.admin.dto;
 
 import com.greatyun.soccer.common.enumuration.ROLE;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,4 +20,10 @@ public class AdminDTO {
     private String adminPwd;
 
     private ROLE role;
+
+    @QueryProjection
+    public AdminDTO(String adminId , String adminPwd , ROLE role) {
+        this.adminId = adminId;
+        this.role = role;
+    }
 }

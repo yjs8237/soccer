@@ -42,6 +42,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     compile "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
