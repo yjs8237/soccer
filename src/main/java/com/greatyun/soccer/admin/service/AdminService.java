@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class AdminService {
@@ -15,7 +17,7 @@ public class AdminService {
     private AdminRepository adminRepository;
 
     @Transactional(readOnly = true)
-    public Admin findAdminByAdminId (String adminId) {
+    public Optional<Admin> findAdminByAdminId (String adminId) {
         return adminRepository.findByAdminId(adminId);
     }
 }

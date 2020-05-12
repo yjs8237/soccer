@@ -19,6 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.mockito.BDDMockito.given;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -64,18 +67,21 @@ class AdminRestControllerTest {
         String adminId = "restapi";
         String credential = "restapi:apiuser";
 
+        Set<ROLE> set = new HashSet<>();
+        set.add(ROLE.SUPER);
+
         // given
         Admin admin = Admin.builder()
                 .adminId(adminId)
                 .adminPwd("apiuser")
-                .role(ROLE.RESTAPI)
+                .roles(set)
                 .build();
 
         AdminDTO adminDTO = AdminDTO.builder()
                 .adminId(adminId)
                 .build();
 
-        given(adminService.findAdminByAdminId(adminId)).willReturn(admin);
+        given(adminService.findAdminByAdminId(adminId).get()).willReturn(admin);
 
         // when and  then
         mockMvc.perform(post("/api/v1/admin/login")

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_admin")
@@ -26,11 +27,9 @@ public class Admin extends BaseEntity {
     @NotNull
     private String adminPwd;
 
-    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
     @NotNull
     @Enumerated(value = EnumType.STRING)
-    private ROLE role;
-
-
+    private Set<ROLE> roles;
 
 }

@@ -1,5 +1,6 @@
-package com.greatyun.soccer.config;
+package com.greatyun.soccer.config.security;
 
+import com.greatyun.soccer.config.security.SecurityLoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -25,7 +26,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) authentication;
-
         UserDetails userDetails = securityLoginService.loadUserByUsername(authToken.getName());
         if(userDetails == null) {
             throw new UsernameNotFoundException(authToken.getName());

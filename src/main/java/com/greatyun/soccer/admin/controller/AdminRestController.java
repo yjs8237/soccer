@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-
+import java.util.Optional;
 
 
 @RestController
@@ -33,8 +33,8 @@ public class AdminRestController {
         if(errors.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ResultAPI.error("잘못된 요청입니다."));
         }
-        Admin admin = adminService.findAdminByAdminId(adminDTO.getAdminId());
-        if(admin == null) {
+        Optional<Admin> optionalAdmin = adminService.findAdminByAdminId(adminDTO.getAdminId());
+        if(!optionalAdmin.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResultAPI.error("존재하지 않는 회원입니다."));
         }
         return ResponseEntity.status(HttpStatus.OK).body(ResultAPI.success("완료되었습니다."));

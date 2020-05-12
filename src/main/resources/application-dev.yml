@@ -8,6 +8,9 @@ spring:
       ddl-auto: create
     database-platform: org.hibernate.dialect.MariaDB53Dialect
     show-sql: off
+    properties:
+      hibernate:
+        format_sql: true
   thymeleaf:
     cache: false
   devtools:
@@ -23,11 +26,21 @@ spring:
     url: jdbc:log4jdbc:mariadb://localhost:3306/soccer
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
+security:
+  oauth2:
+    client:
+      client-id: soccer_user
+      client-secret: 1234
+    resource:
+      token-info-uri: http://127.0.0.1:8080/oauth/check_token
+
+
 logging:
   level:
     org:
       hibernate:
-        type: trace
+        SQL: DEBUG
+        type: off
   config: classpath:logback-spring.xml
 
 
